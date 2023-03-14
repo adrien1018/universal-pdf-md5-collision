@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Modified from HashClash's `scripts/poc_no.sh` to reject collision blocks with forbidden characters
+
 set -o pipefail
 
 export BINDIR=$(dirname $0)/../bin
