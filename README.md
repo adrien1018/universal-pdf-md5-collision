@@ -26,4 +26,4 @@ After precomputing the collision blocks, constructing arbitrary PDF collision is
 
 With N pairs of collision blocks, up to 2<sup>N</sup> different files with the same MD5 collision can be constructed, although it depends heavily on the use case. For example, to construct a MD5 quine that displays its MD5 hash in hexadecimal format, we need 16x32=512 pairs of collision blocks; if instead the hash should be displayed in binary format, only 128 collision blocks is needed.
 
-In this project, a total of 3450 collision blocks is precomputed, which should be sufficient for all common use cases. The collisions are precomputed in a month using a server with two Xeon® E5-2620 v4 CPUs (a total of 32 threads).
+In this project, a total of 4000 collision blocks is precomputed, which should be sufficient for all common use cases. The collisions are precomputed in 38 days using a server with two Xeon® E5-2620 v4 CPUs (a total of 32 threads).
