@@ -2,6 +2,10 @@
 
 This project enables one to generate virtually any single-page PDF MD5 collisions **without any additional collision computation**, such as [this text-only MD5 quine](/example/MD5_Quine.pdf) which displays its own MD5 checksum.
 
+## How to use this to build my PDF collision files?
+
+The process to generate the desired PDF file(s) will vary depending on your specific use case. The detailed instruction for creating the above-mentioned MD5 quine is available in the [`example/` directory](/example). This can serve as a helpful blueprint for constructing your own collision file.
+
 ## How does it work?
 
 A PDF file mainly consists of a hierarchy of *objects*. A page in a PDF file is represented by a [*page object*](https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/PDF32000_2008.pdf#G6.1956489), and its content is specified by the `Contents` key in the page object, which normally references a [*content stream*](https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/PDF32000_2008.pdf#G6.1913072) (which is also a type of object). There are some useful properties that make precomputing a multi-way PDF collision possible:
@@ -27,10 +31,6 @@ After precomputing the collision blocks, constructing arbitrary PDF collision is
 With N pairs of collision blocks, up to 2<sup>N</sup> different files with the same MD5 collision can be constructed, although it depends heavily on the use case. For example, to construct a MD5 quine that displays its MD5 hash in hexadecimal format, we need 16x32=512 pairs of collision blocks; if instead the hash should be displayed in binary format, only 128 collision blocks is needed.
 
 In this project, a total of 4000 collision blocks is precomputed, which should be sufficient for all common use cases. The collisions are precomputed in 38 days using a server with two Xeon® E5-2620 v4 CPUs (a total of 32 threads).
-
-## How to use this to build my PDF collision files?
-
-The process to generate the desired PDF file(s) will vary depending on your specific use case. The detailed instruction for creating the above-mentioned [MD5 quine](/example/MD5_Quine.pdf) is available in the [`example/` directory](/example). This can serve as a helpful blueprint for constructing your own collision file.
 
 ## Running the precomputation
 

@@ -36,8 +36,6 @@ for mat in OBJ_PAT.finditer(data):
             offset_table = b''.join([i[1:] for i in offset_table])
             # print(offset_table)
 
-# print(offset_dict)
-
 data = data[:offset_dict[xref_id]]
 entry_size = sum(xref_format)
 format_sum = [0] + list(itertools.accumulate(xref_format))
@@ -52,6 +50,15 @@ for i, j in offset_dict.items():
     offset_table[i] = [1, j, 0]
 if any([i[2] == 65535 for i in offset_table]):
     xref_format[2] = 2
+
+if len(sys.argv) == 2:
+    for j, i in enumerate(offset_table):
+        if i[0] == 0: continue
+        if i[0] == 1:
+            print(f'Object {j} at offset {i[1]}')
+        else:
+            print(f'Object {j} in index {i[2]} of object {i[1]}')
+    sys.exit(0)
 
 use_predictor = True
 offset_data = [bytearray() for i in offset_table]
