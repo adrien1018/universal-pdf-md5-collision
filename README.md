@@ -1,6 +1,6 @@
 # Universal PDF MD5 collision
 
-This project enables one to generate virtually any single-page PDF MD5 collisions **without any additional collision computation**, such as [this text-only MD5 quine](/MD5_Quine.pdf) which displays its own MD5 checksum.
+This project enables one to generate virtually any single-page PDF MD5 collisions **without any additional collision computation**, such as [this text-only MD5 quine](/example/MD5_Quine.pdf) which displays its own MD5 checksum.
 
 ## How does it work?
 
