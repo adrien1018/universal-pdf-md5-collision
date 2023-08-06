@@ -47,7 +47,7 @@ parser.add_argument('-d', '--hashclash-dir',
                     help="Directory of hashclash (must be already compiled)")
 parser.add_argument('start', nargs='?', type=int, default=1000,
                     help="Starting object ID")
-parser.add_argument('end', nargs='?', type=int, default=7900,
+parser.add_argument('end', nargs='?', type=int, default=9000,
                     help="Ending object ID")
 args = parser.parse_args()
 if args.hashclash_dir:
