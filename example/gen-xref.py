@@ -35,7 +35,6 @@ for mat in OBJ_PAT.finditer(data):
             for i in range(1, len(offset_table)):
                 offset_table[i] = bytes((offset_table[i][j] + offset_table[i-1][j]) % 256 for j in range(columns))
             offset_table = b''.join([i[1:] for i in offset_table])
-            # print(offset_table)
 
 data = data[:offset_dict[xref_id]]
 entry_size = sum(xref_format)
@@ -49,7 +48,7 @@ num_entries = max(len(offset_table), max(offset_dict) + 1)
 offset_table += [[0, 0, 65535] for i in range(num_entries - len(offset_table))]
 for i, j in offset_dict.items():
     offset_table[i] = [1, j, 0]
-if any([i[2] == 65535 for i in offset_table]):
+if any([i[2] == 65535 for i in offset_table]) and xref_format[2] < 2:
     xref_format[2] = 2
 
 if len(sys.argv) == 2:
