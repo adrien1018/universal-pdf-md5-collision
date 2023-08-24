@@ -23,6 +23,7 @@ for mat in OBJ_PAT.finditer(data):
         xref_header = re.sub(rb'/(Size|Length|W|Filter)\W[^/]*', b'', xmat[1])
         xref_header = re.sub(rb'/DecodeParms<<.*?>>', b'', xref_header)
         xref_format = list(map(int, re.findall(rb'/W.*?\[(\d+).*?(\d+).*?(\d+)\]', xmat[1])[0]))
+        root_object = re.search(rb'/Root[^/]+', xref_header)[0].decode()
         offset_table = xmat[2]
         if re.search(rb'/Filter.*FlateDecode', xmat[1]):
             offset_table = zlib.decompress(xmat[2])
@@ -52,6 +53,7 @@ if any([i[2] == 65535 for i in offset_table]):
     xref_format[2] = 2
 
 if len(sys.argv) == 2:
+    print(root_object)
     for j, i in enumerate(offset_table):
         if i[0] == 0: continue
         if i[0] == 1:
