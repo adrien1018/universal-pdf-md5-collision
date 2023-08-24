@@ -73,7 +73,7 @@ endobj
 000000e0: 656e 646f 626a 0d                        endobj.
 ```
 
-Looks like it contains a bunch of random bytes. The keyword here is the `/Filter FlateDecode`, which means the content is compressed using DEFLATE and we need to decompress it. Hence, we can extract the bytes between the newline after `stream` and the newline before `endstream`, convert it into hexadecimal, and feed it into `convert.py`:
+Looks like it contains a bunch of random bytes. The keyword here is the `/Filter/FlateDecode`, which means the content is compressed using DEFLATE and we need to decompress it. Hence, we can extract the bytes between the newline after `stream` and the newline before `endstream`, convert it into hexadecimal, and feed it into `convert.py`:
 
 ```
 $ ./convert.py <<< '789c33543050303450303751b0b1d177cecf2b49cd2b295630028a06e93be6e5e59714471b1b8078b1fa0189454049906a9064506a717e6951726ab18231981f5259900a54929e6a670736a914a454df3b33a538da10a2df37352533d129bf221a6480a9a5a99e9191828589512c426bb19d1d1700a5382969'
